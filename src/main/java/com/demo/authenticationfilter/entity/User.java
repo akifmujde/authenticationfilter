@@ -23,6 +23,10 @@ public class User {
     @Column
     private String password;
 
+    @ManyToOne
+    @JoinColumn(name = "role_id")
+    private Role role;
+
     @Column
     private Boolean isAccountNonExpired;
 
@@ -37,12 +41,15 @@ public class User {
 
     public static User of(
             String username,
-            String password
+            String password,
+            Role role
     ) {
         User user = new User();
 
         user.setUsername(username);
         user.setPassword(password);
+
+        user.setRole(role);
 
         user.setIsAccountNonExpired(true);
         user.setIsAccountNonLocked(true);
