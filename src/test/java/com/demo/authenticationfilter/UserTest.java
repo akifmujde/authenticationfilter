@@ -7,6 +7,7 @@ import com.demo.authenticationfilter.repository.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @SpringBootTest
 public class UserTest {
@@ -15,17 +16,40 @@ public class UserTest {
     private String USER_PASSWORD = "password";
 
     private String ROLE_PREFIX = "ROLE_";
-    private String ROLE_NAME = "STUDENT";
+    private String ROLE_NAME = "ADMIN";
 
     public String getRole() {
         return ROLE_PREFIX + ROLE_NAME;
     }
+
+    public String getPassword() {
+        return passwordEncoder.encode(USER_PASSWORD);
+    }
+
+    @Autowired
+    PasswordEncoder passwordEncoder;
 
     @Autowired
     UserRepository userRepository;
 
     @Autowired
     RoleRepository roleRepository;
+
+    @Test
+    public void addUser() {
+
+        userRepository.deleteAll();
+
+        Role admin = roleRepository.findFirstByRoleName(getRole());
+
+        userRepository.save(User.of(USER_NAME, getPassword(), admin));
+
+        if (userRepository.count() > 0)
+            System.out.println("Success");
+        else
+            System.out.println("Fail");
+
+    }
 
     @Test
     public void userTest() {
