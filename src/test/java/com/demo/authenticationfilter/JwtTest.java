@@ -18,7 +18,7 @@ public class JwtTest {
     SecretKey secretKey;
 
     @Test
-    public void jwtTEst() {
+    public void jwtTest() {
 
         String verifyToken = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJha2lmbXVqZGUiLCJyb2xlIjoiYWRtaW4ifQ.iAtzY2xziQAOdjK-VzrLGNuNCcr9Yp0-HqoVxEw1-fw";
 
