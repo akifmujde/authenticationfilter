@@ -24,6 +24,9 @@ public class Role {
     @OneToMany(mappedBy = "role")
     private Set<User> users;
 
+    @OneToMany(mappedBy = "role")
+    private Set<RoleManagement> roleManagements;
+
     public static Role of(String roleName) {
 
         String DEFAULT_ROLE_PREFIX = "ROLE_";

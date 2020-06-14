@@ -1,10 +1,12 @@
 package com.demo.authenticationfilter.entity;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "scope")
@@ -19,6 +21,9 @@ public class Scope {
 
    @Column
    private String scopeName;
+
+   @OneToMany(mappedBy = "scope")
+   private Set<RoleManagement> roleManagements;
 
    public static Scope of(String scopeName) {
 

@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "database_process")
@@ -19,6 +20,9 @@ public class DatabaseProcess {
 
     @Column
     private String processName;
+
+    @OneToMany(mappedBy = "process")
+    private Set<RoleManagement> roleManagements;
 
     public static DatabaseProcess of(String processName) {
 
