@@ -21,4 +21,8 @@ public class JwtProperties {
     public String getAuthorizationHeader() {
         return HttpHeaders.AUTHORIZATION;
     }
+
+    public String getAuthoritiesClaimKey() {
+        return "authorities";
+    }
 }
