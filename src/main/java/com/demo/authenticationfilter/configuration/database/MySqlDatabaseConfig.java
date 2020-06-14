@@ -1,4 +1,4 @@
-package com.demo.authenticationfilter.configuration;
+package com.demo.authenticationfilter.configuration.database;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
